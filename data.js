@@ -60,6 +60,7 @@ async function loadLawyers() {
     const row = document.createElement("tr");
     row.classList.add("hover:bg-gray-50");
     row.innerHTML = `
+      <td class='border px-3 py-2'>${lawyer.No}</td>
       <td class='border px-3 py-2'>${lawyer.Name}</td>
       <td class='border px-3 py-2'>${lawyer.Specialty}</td>
       <td class='border px-3 py-2'>${lawyer.Enrolment}</td>
@@ -183,3 +184,30 @@ window.onscroll = function() {
 scrollTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+// === LOAD LAWYERS WITH SERIAL NUMBERS ===
+async function loadLawyers() {
+  const res = await fetch(`${API}?action=getLawyers`);
+  const data = await res.json();
+  tableBody.innerHTML = "";
+  data.forEach((lawyer, index) => {  // index se row number milega
+    const row = document.createElement("tr");
+    row.classList.add("hover:bg-gray-50");
+    row.innerHTML = `
+      <td class='border px-3 py-2 text-center font-semibold'>${index + 1}</td>  <!-- Serial number -->
+      <td class='border px-3 py-2'>${lawyer.Name}</td>
+      <td class='border px-3 py-2'>${lawyer.Specialty}</td>
+      <td class='border px-3 py-2'>${lawyer.Enrolment}</td>
+      <td class='border px-3 py-2'>${lawyer.Phone}</td>
+      <td class='border px-3 py-2'>${lawyer.Email}</td>
+      <td class='border px-3 py-2'>${lawyer.Address}</td>
+      <td class='border px-3 py-2 text-center flex gap-2 justify-center'>
+        <button class='bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-500 font-semibold editBtn transition transform hover:scale-105'>Edit</button>
+        <button class='bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 font-semibold deleteBtn transition transform hover:scale-105'>Delete</button>
+      </td>`;
+    tableBody.appendChild(row);
+
+    row.querySelector(".editBtn").addEventListener("click", () => editLawyer(lawyer));
+    row.querySelector(".deleteBtn").addEventListener("click", () => deleteLawyer(lawyer.Enrolment));
+  });
+}
