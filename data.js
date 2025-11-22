@@ -93,8 +93,8 @@ function renderTable() {
     row.innerHTML = `
       <td class='border px-3 py-2 text-center font-semibold'>${index + 1}</td>
       <td class='border px-3 py-2'>${lawyer.Name}</td>
-      <td class='border px-3 py-2'>${lawyer.Specialty}</td>
       <td class='border px-3 py-2'>${lawyer.Enrolment}</td>
+      <td class='border px-3 py-2'>${lawyer.Specialty}</td>
       <td class='border px-3 py-2'>${lawyer.Phone}</td>
       <td class='border px-3 py-2'>${lawyer.Email}</td>
       <td class='border px-3 py-2'>${lawyer.Address}</td>
