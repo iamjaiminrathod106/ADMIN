@@ -13,10 +13,10 @@
   .hidden { display: none; }
 </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
+<body class="flex flex-col min-h-screen">
 
 <!-- 🔒 LOGIN PAGE -->
-<div id="loginPage" class="w-full max-w-sm bg-white p-8 rounded-xl shadow-2xl border border-gray-100 mx-4">
+<div id="loginPage" class="w-full max-w-sm bg-white p-8 rounded-xl shadow-2xl border border-gray-100 mx-auto my-12">
   <div class="text-center mb-8">
     <svg class="w-10 h-10 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -85,13 +85,19 @@
     <!-- Table -->
     <div class="bg-white rounded-xl shadow-lg p-6 overflow-x-auto mt-4">
       <h2 class="text-lg font-semibold text-blue-600 mb-4">All Lawyers</h2>
+      
+      <div class="mb-4 flex flex-col sm:flex-row gap-2">
+        <button id="downloadCSVBtn" class="bg-yellow-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-lg hover:bg-yellow-600 font-semibold text-sm sm:text-base w-full sm:w-auto">Download CSV</button>
+        <button id="downloadWordBtn" class="bg-purple-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-lg hover:bg-purple-700 font-semibold text-sm sm:text-base w-full sm:w-auto">Download Word</button>
+      </div>
+
       <table class="min-w-full text-sm border border-gray-200">
         <thead class="bg-gray-50">
           <tr>
             <th class="border px-3 py-2 text-center">No</th>
+            <th class="px-4 py-2 border">Enrolment</th>
             <th class="px-4 py-2 border">Name</th>
             <th class="px-4 py-2 border">Specialty</th>
-            <th class="px-4 py-2 border">Enrolment</th>
             <th class="px-4 py-2 border">Phone</th>
             <th class="px-4 py-2 border">Email</th>
             <th class="px-4 py-2 border">Address</th>
@@ -105,5 +111,6 @@
 </div>
 
 <script src="data.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
